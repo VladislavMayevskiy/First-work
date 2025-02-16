@@ -1,0 +1,22 @@
+.navbar-logo {
+    width: 80px; /* Зменшення розміру зображення */
+    height: auto;
+    margin-right: 15px; /* Відступ між лого і текстом */
+}
+
+.navbar-text h1 {
+    color: white;
+    font-size: 24px;
+    margin: 0;
+}
+
+.navbar-text p {
+    color: rgba(255, 255, 255, 0.598);
+    font-size: 16px;
+    margin: 10px;
+    font-size: 15px;
+}
+.button {
+    width: 300px;
+    background-color: aqua;
+}
