@@ -1,18 +1,19 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React from "react";
+import Navbar from "./pages/Navbar";
+import ProductList from "./pages/ProductList";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import Product from "./pages/Product";
-import Contact from "./pages/Contact";
-import Navbar from "./pages/Navbar"; // Зазвичай Navbar зберігається в components, виправ шлях, якщо треба
 
-export default function App() {
-    return (
-        <Router>
-            <Navbar /> {/* Виправлено запис */}
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/product" element={<Product />} />
-                <Route path="/contact" element={<Contact />} />
-            </Routes>
-        </Router>
-    );
-}
+const App = () => {
+  return (
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<ProductList />} />
+      </Routes>
+    </Router>
+  );
+};
+
+export default App;
