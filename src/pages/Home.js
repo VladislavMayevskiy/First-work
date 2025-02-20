@@ -1,31 +1,83 @@
 import React from "react";
-import "./Home.css";
-import product1Image from "../images/product1.png";
-import product2Image from "../images/product2.png"
+import { Box, Typography, Button, Container } from "@mui/material";
+import ProductList from "./ProductList";
+import { useNavigate } from "react-router-dom";
+import forHome from "../images/forHome.png";
+import tableBefore from "../images/tableBefore.png";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
 
+const theme = createTheme({
+  typography: {
+    fontFamily: `"Montserrat", "Roboto", "Arial", sans-serif`,
+  },
+});
 
 const Home = () => {
-    return (
-        <div className="home-container">
-            <h1 className="home-title">Ласкаво просимо!</h1>
-            <p className="home-description">
-                Ми спеціалізуємося на виготовленні професійних спортивних станків. Гарантуємо якість та надійність продукції.
-            </p>
+  const navigate = useNavigate();
 
-            <div className="product-gallery">
-                <div className="product-card">
-                    <img src={product1Image} alt="product1" className="product-image"/>
-                    <h3>Станок Samson</h3>
-                    <p>Професійний станок для армрестлінгу.</p>
-                </div>
-                <div className="product-card">
-                <img src = {product2Image} alt="product2" className="product-image"/>
-                    <h3>Станок Power</h3>
-                    <p>Ідеальний вибір для тренувань.</p>
-                </div>
-            </div>
-        </div>
-    );
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Container maxWidth="lg">
+        <Box textAlign="center" my={4}>
+          <Typography variant="h3" fontWeight="bold" gutterBottom>
+            Виготовлення професійних спортивних тренажерів
+          </Typography>
+          <Typography variant="h6" color="textSecondary">
+            Ми спеціалізуємося на виробництві якісного обладнання для тренажерних залів та домашніх тренувань.
+          </Typography>
+        </Box>
+
+        <Box textAlign="center" mb={4}>
+          <Button 
+            variant="contained" 
+            color="primary" 
+            size="large" 
+            onClick={() => navigate("/products")}
+          >
+            Переглянути каталог
+          </Button>
+        </Box>
+
+        <Box 
+          display="flex" 
+          justifyContent="space-between" 
+          alignItems="center"
+          flexWrap="wrap"
+          mb={4}
+          gap={2} 
+        >
+          <Box textAlign="center" maxWidth="45%">
+            <img 
+              src={tableBefore} 
+              alt="Станок перед обробкою" 
+              style={{ width: "100%", maxWidth: "400px", borderRadius: "8px" }} 
+            />
+            <Typography variant="h6" mt={2}>
+              Ось це каркас столу для боротьби з армреслінгу. Зроблений з металопрофілю.
+            </Typography>
+          </Box>
+
+          <Box textAlign="center" maxWidth="45%"> 
+            <img 
+              src={forHome} 
+              alt="Процес виготовлення" 
+              style={{ width: "100%", maxWidth: "400px", borderRadius: "8px" }} 
+            />
+            <Typography variant="h6" mt={2}>
+              На цьому станку робляться більшість виробів.
+            </Typography>
+          </Box>
+        </Box>
+
+        <Typography variant="h4" fontWeight="bold" mb={2}>
+          Популярні товари
+        </Typography>
+        <ProductList />
+      </Container>
+    </ThemeProvider>
+  );
 };
 
 export default Home;
